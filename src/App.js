@@ -4,16 +4,19 @@ function App() {
   const [counter, setCounter] = useState(0);
   const [keyword, setKeyword] = useState("");
   const onClick = () => setCounter((prev) => prev + 1);
-  const onChange = (event) => {
-    setKeyword(event.target.value);
-  };
-  console.log("i run all the time");
+  const onChange = (event) => setKeyword(event.target.value);
   useEffect(() => {
-    console.log("Call The API....");
+    console.log("I run only once");
   }, []);
   useEffect(() => {
-    console.log("search for", keyword);
+    console.log("I run when 'keyword' changes", keyword);
   }, [keyword]);
+  useEffect(() => {
+    console.log("I run when 'counter' changes", counter);
+  }, [counter]);
+  useEffect(() => {
+    console.log("I run when 'keyword' & 'counter' changes");
+  }, [keyword, counter]);
   return (
     <div>
       <input
